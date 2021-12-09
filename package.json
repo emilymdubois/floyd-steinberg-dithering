@@ -1,7 +1,7 @@
 {
   "name": "floyd-steinberg-dithering",
   "version": "1.0.0",
-  "description": "A Node.js Floyd-Steinberg dithering algorithm",
+  "description": "g",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,13 @@
     "jimp": "^0.16.1"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "prettier": "^2.5.1",
     "tape": "^5.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

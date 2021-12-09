@@ -1,33 +1,45 @@
 # floyd-steinberg-dithering
 
-A Node.js Floyd-Steinberg dithering algorithm CLI.
+A command line interface (CLI) tool for executing a grayscale Floyd-Steinberg
+dithering algorithm in Node.js.
 
-Input | Output
---- | ---
-![](./test/fixtures/test1.png) | ![](./test/fixtures/test1_dithered.png)
+| Input                          | Output                                  |
+| ------------------------------ | --------------------------------------- |
+| ![](./test/fixtures/test1.png) | ![](./test/fixtures/test1_dithered.png) |
 
-## Install
+## What does it do?
+
+Dithering is the process of adding noise to an image. It can create the
+appearance of shading when the color range is limited by strategically spacing
+pixels, and is useful to reduce file size when image fidelity is not paramount.
+The Floyd-Steinberg algorithm diffuses each pixel’s error to neighboring pixels,
+which can create a visual “blending” effect.
+
+## Installation
 
 ```sh
-$ git clone git@github.com:emilymdubois/floyd-steinberg-dithering.git
-$ cd floyd-steinberg-dithering
-$ npm link
+git clone git@github.com:emilymdubois/floyd-steinberg-dithering.git
+cd floyd-steinberg-dithering
+npm link
 ```
 
-## Use
+## Usage
 
-This CLI script expects a valid filepath to a JPEG or PNG image. The output of the dithering algorithm is written to a file of the same type, suffixed with `_dithered`, in the same directory as the input file.
+This script expects a valid filepath to a JPEG or PNG image. The output of the
+dithering algorithm is written to a file of the same type, suffixed with
+`_dithered`, in the same directory as the input file.
 
 ```sh
 $ floyd-steinberg-dithering path/to/file.png
 # Output will be written to path/to/file_dithered.png
 ```
 
-You can also create a symbolic link to use this library locally in another project.
+If you’d prefer to call the Node.js functions directly from a Node.js file, you
+can use a symbolic link to import the functions as dependencies:
 
 ```sh
-$ cd another/project
-$ npm link floyd-steinberg-dithering
+cd another/project
+npm link floyd-steinberg-dithering
 ```
 
 ```js
@@ -37,13 +49,13 @@ import dither, {write} from 'floyd-steinberg-dithering';
 
 const inputPath = 'path/to/file.png';
 
-dither(inputPath)
-  .then(image => {
-    const outputPath = write(inputPath, image);
-  });w
+dither(inputPath).then((image) => {
+  const outputPath = write(inputPath, image);
+  console.log('Wrote dithered output to', outputPath);
+});
 ```
 
-## Test
+## Testing
 
 ```sh
 $ npm test
