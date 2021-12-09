@@ -33,13 +33,13 @@ $ npm link floyd-steinberg-dithering
 ```js
 #!/usr/bin/env node
 
-import ditherImage, {writeImage} from 'floyd-steinberg-dithering';
+import dither, {write} from 'floyd-steinberg-dithering';
 
 const inputPath = 'path/to/file.png';
 
-ditherImage(inputPath)
+dither(inputPath)
   .then(image => {
-    const outputPath = writeImage(inputPath, image);
+    const outputPath = write(inputPath, image);
   });w
 ```
 
